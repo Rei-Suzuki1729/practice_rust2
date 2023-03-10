@@ -58,3 +58,43 @@ cp target/aarch64-wrs-vxworks/debug/semaphore.vxe /media/horie/FAT32
 cmd
 cd /bd0a
 ./semaphore.vxe
+
+/*******************************************************************/
+// Build using Linux host
+cargo new spin
+cd spin
+cp ~/Downloads/vx_rust2/spin/src/main.rs src
+vi Cargo.toml
+
+[dependencies]
+spin = "0.9.2"
+
+cargo build
+ls -l target/aarch64-wrs-vxworks/debug
+cp target/aarch64-wrs-vxworks/debug/spin.vxe /media/horie/FAT32
+
+// vxworks for raspberry Pi 4B
+cmd
+cd /bd0a
+./spin.vxe
+
+/*******************************************************************/
+// Build using Linux host
+cargo new write_json
+cd write_json
+cp ~/Downloads/vx_rust2/write_json/src/main.rs src
+vi Cargo.toml
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+cargo build
+ls -l target/aarch64-wrs-vxworks/debug
+cp target/aarch64-wrs-vxworks/debug/write_json.vxe /media/horie/FAT32
+
+// vxworks for raspberry Pi 4B
+cmd
+cd /bd0a
+./write_json.vxe
+more windriver.json
