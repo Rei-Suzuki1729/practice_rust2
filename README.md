@@ -43,3 +43,18 @@ cp target/aarch64-wrs-vxworks/debug/condvar.vxe /media/horie/FAT32
 cmd
 cd /bd0a
 ./condvar.vxe
+
+/*******************************************************************/
+// Build using Linux host
+cargo new semaphore
+cd semaphore
+cp ~/Downloads/vx_rust2/semaphore/src/main.rs src
+cp ~/Downloads/vx_rust2/semaphore/src/semaphore.rs src
+cargo build
+ls -l target/aarch64-wrs-vxworks/debug
+cp target/aarch64-wrs-vxworks/debug/semaphore.vxe /media/horie/FAT32
+
+// vxworks for raspberry Pi 4B
+cmd
+cd /bd0a
+./semaphore.vxe
