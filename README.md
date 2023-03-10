@@ -98,3 +98,24 @@ cmd
 cd /bd0a
 ./write_json.vxe
 more windriver.json
+
+/*******************************************************************/
+// Build using Linux host
+cargo new read_json
+cd read_json
+cp ~/Downloads/vx_rust2/read_json/src/main.rs src
+vi Cargo.toml
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+cargo build
+ls -l target/aarch64-wrs-vxworks/debug
+cp target/aarch64-wrs-vxworks/debug/read_json.vxe /media/horie/FAT32
+
+
+// vxworks for raspberry Pi 4B
+cmd
+cd /bd0a
+./read_json.vxe
