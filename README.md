@@ -119,3 +119,19 @@ cp target/aarch64-wrs-vxworks/debug/read_json.vxe /media/horie/FAT32
 cmd
 cd /bd0a
 ./read_json.vxe
+
+
+/*******************************************************************/
+// Build using Linux host
+cargo new simple_server
+cd  simple_server
+cp ~/Downloads/vx_rust2/simple_server/src/main.rs src
+cargo build
+ls -l target/aarch64-wrs-vxworks/debug
+cp target/aarch64-wrs-vxworks/debug/simple_server.vxe /media/horie/FAT32
+cp ~/Downloads/vx_rust2/simple_server/index.html /media/horie/FAT32
+
+// vxworks for raspberry Pi 4B
+cmd
+cd /bd0a
+./simple_server.vxe
